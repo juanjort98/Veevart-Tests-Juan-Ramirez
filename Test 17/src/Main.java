@@ -4,9 +4,9 @@ public class Main {
 
         int N = 4; /* Testing with 4x4 matrix */
 
-        ChessGame chess = new ChessGame(N);
+        ChessGame chess = new ChessGame(N); //Instance of the ChessGame class
 
-        String board[][] = new String[N][N];
+        String board[][] = new String[N][N]; //Create board
 
         chess.createBoard(board);
 

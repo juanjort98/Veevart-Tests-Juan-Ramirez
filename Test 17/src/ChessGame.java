@@ -1,12 +1,39 @@
 public class ChessGame {
 
 
+      
+    // **************************************************
+    // Fields
+    // ***
+
     public int n;
 
+       /**
+    * Parameterized constructor.
+    * 
+    * @param n The value that will be set to this instance.
+    */
 
     public ChessGame(int n){
         this.n = n;
     }
+
+
+      // **************************************************
+    // Public methods
+    // **************************************************
+
+
+    
+    /**
+    * Method that checks if the position is safe to place the queen.
+    * 
+    * @param chessBoard The board to place the queens.
+    * @param row the rows of the chessBoard
+    * @param column the columns of the chessBoard.
+    * @return boolean result if the place is safe to put the queen
+    */
+
 
     public  boolean safeToPut(String chessBoard[][], int row, int column) {
         /* Check upper column */
@@ -27,6 +54,14 @@ public class ChessGame {
 
         return true;
     }
+
+        /**
+    * Method that recursively iterates through the chess.
+    * 
+    * @param chessBoard The board to place the queens.
+    * @param row the rows of the chessBoard
+    * @return boolean result if the queen was placed 
+    */
 
     public boolean nQueenRecursiveMethod(String chessBoard[][], int row) {
 
@@ -53,6 +88,12 @@ public class ChessGame {
 
     }
 
+          /**
+    * Method that print the matrix.
+    * 
+    * @param chessBoard The board to place the queens.
+    */
+
     public void printMatrix(String chessBoard[][]) {
 
         for (int i = 0; i < chessBoard.length; i++) {
@@ -62,6 +103,13 @@ public class ChessGame {
             System.out.println();
         }
     }
+
+           /**
+    * Method that initializes the initial board with "o".
+    * 
+    * @param chessBoard The board to place the queens.
+    */
+
 
     public void createBoard(String board[][]) {
 
