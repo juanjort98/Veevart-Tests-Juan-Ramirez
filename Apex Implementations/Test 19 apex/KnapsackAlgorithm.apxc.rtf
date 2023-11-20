@@ -1,0 +1,49 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 public class KnapsackAlgorithm \{\
+\
+   \
+\
+    public Bag knapsack(List<Element> elements, Integer bagMaxCapacity) \{\
+       \
+        Integer[][] dynamicP = new Integer[elements.size() + 1][bagMaxCapacity + 1]; \
+        for (Integer i = 1; i <= elements.size(); i++) \{\
+            Element currElement = elements.get(i - 1);\
+            for (Integer j = 0; j <= bagMaxCapacity; j++) \{\
+                if (currElement.getWeight() > j) \{\
+                    dynamicP[i][j] = dynamicP[i - 1][j];\
+                \} else \{\
+                    dynamicP[i][j] = Math.max(dynamicP[i-1][j],\
+                            dynamicP[i - 1][j - currElement.getWeight()] + currElement.getValue());\
+                \}\
+            \}\
+        \}\
+\
+        List<Element> finalBagList = new List<Element>(); //List with included elements\
+\
+        Integer j = bagMaxCapacity;\
+\
+        for (Integer i = elements.size(); i > 0 && j > 0; i--) \{\
+            if (dynamicP[i][j] != dynamicP[i - 1][j]) \{\
+                Element chosenlement = elements.get(i - 1);\
+\
+                finalBagList.add(chosenlement);\
+\
+                j = chosenlement.getWeight();\
+\
+            \}\
+        \}\
+\
+        \
+        Bag resultBag = new Bag(finalBagList, dynamicP[elements.size()][bagMaxCapacity]);\
+\
+        return resultBag;\
+\
+    \}\
+\
+\}}
